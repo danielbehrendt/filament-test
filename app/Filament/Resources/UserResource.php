@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
-use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Resources\Form;
@@ -19,33 +18,18 @@ class UserResource extends Resource
 
     public static function form(Form $form): Form
     {
+        $options = ['A', 'B', 'C'];
+
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('email')
-                    ->email()
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('password')
-                    ->password()
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Fieldset::make('person')
-                    ->relationship('person')
-                    ->schema([
-                        Forms\Components\TextInput::make('name')
-                            ->required()
-                            ->maxLength(255),
-                        Forms\Components\Fieldset::make('contact')
-                            ->relationship('contact')
-                            ->schema([
-                                Forms\Components\TextInput::make('phone')
-                                    ->required()
-                                    ->maxLength(255),
-                            ])
-                    ])
+                Forms\Components\CheckboxList::make('list_a')
+                    ->options($options)
+                    ->bulkToggleable()
+                    ->reactive(),
+                Forms\Components\Radio::make('list_b')
+                    ->options($options)
+                    ->bulkToggleable()
+                    ->reactive(),
             ]);
     }
 
