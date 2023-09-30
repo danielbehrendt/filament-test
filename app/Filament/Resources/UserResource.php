@@ -18,12 +18,10 @@ class UserResource extends Resource
 
     public static function form(Form $form): Form
     {
-        $options = ['A', 'B', 'C'];
-
         return $form
             ->schema([
                 Forms\Components\CheckboxList::make('list_a')
-                    ->options($options)
+                    ->options(['A', 'B', 'C'])
                     ->bulkToggleable()
                     ->reactive(),
             ]);
