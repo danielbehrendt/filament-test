@@ -26,10 +26,6 @@ class UserResource extends Resource
                     ->options($options)
                     ->bulkToggleable()
                     ->reactive(),
-                Forms\Components\Radio::make('list_b')
-                    ->options($options)
-                    ->bulkToggleable()
-                    ->reactive(),
             ]);
     }
 
